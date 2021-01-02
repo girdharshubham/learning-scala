@@ -1,0 +1,23 @@
+name: Cache generator Job
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  cache:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'main'
+      - name: Cache SBT
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.ivy2/cache
+            ~/.sbt
+          key: ${{ runner.os }}-sbt-${{ hashFiles('**/build.sbt') }}
+      - name: Build
+        run: |
+          sbt update

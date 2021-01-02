@@ -28,7 +28,7 @@ jobs:
           name: scalastyle
           path: |
             target/scalastyle-result.xml
-  test:
+  scoverage:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -47,3 +47,4 @@ jobs:
           name: scoverage
           path: |
             target/scala-2.12/scoverage-report/scoverage.xml
+      

@@ -1,0 +1,67 @@
+name: Release Manager (Pre-Prod)
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseBranch:
+        description: 'Release Branch Name'
+        required: true
+
+jobs:
+  create-release:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'develop'
+      - name: Creating Relese Branch
+        run: |
+          git checkout -b ${{ github.event.inputs.releaseBranch }}
+      - name: Pushing Release Branch
+        run: |
+          git push origin ${{ github.event.inputs.releaseBranch }}
+      - name: Queueing Check on Release
+        run: |
+          CURRENT_BRANCH=$(git branch --show-current)
+          curl -X POST https://api.github.com/repos/girdharshubham/learning-scala/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.TOKEN }} \
+          --data '{"event_type": "release_check", "client_payload": { "branch": "'"$CURRENT_BRANCH"'" }}'
+---
+name: Release Check (Pre-Prod)
+
+on:
+  repository_dispatch:
+    types: [ release_check ]
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.client_payload.branch }}
+      - name: Run Test
+        run: |
+          git branch --show-current
+          sbt test
+
+---
+name: Release Manager
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  prepare-release:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Tag and publish
+        run: |
+          TAG=$(git log -1 | grep -owe "v[012].[0-9]\+.[0-9]\+")
+          echo $TAG
+          git tag $TAG
+          git push origin $TAG

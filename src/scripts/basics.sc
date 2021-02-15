@@ -11,3 +11,7 @@ val referenceOnly = TriggerTypes.ReferenceOnly
   case 2 | 3 => println("meh!")
   case 1 | 4 => println("double meh!")
 }
+
+for {
+  char <- ('a' to 'z')
+} yield (char, 0)

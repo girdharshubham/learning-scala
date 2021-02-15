@@ -22,5 +22,5 @@ libraryDependencies ++= Seq(
   typesafeLogging
 )
 
-coverageMinimum := 85
+coverageMinimum := 80
 coverageFailOnMinimum := true

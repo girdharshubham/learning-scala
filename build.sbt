@@ -14,6 +14,12 @@ lazy val scodecBits = "org.scodec" %% "scodec-bits" % ScodecBitsVersion
 lazy val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
 lazy val typesafeLogging = "com.typesafe.scala-logging" %% "scala-logging" % TypesafeLoggingVersion
 
+enablePlugins(GraalVMNativeImagePlugin)
+graalVMNativeImageOptions ++= Seq(
+  "--no-fallback",
+  "--allow-incomplete-classpath"
+)
+
 libraryDependencies ++= Seq(
   scalaTest,
   scodecCore,

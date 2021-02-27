@@ -5,6 +5,7 @@ object TriggerTypes extends Enumeration {
   type TriggerType = Value
   val ReferenceOnly, MilOn, ServerRequest, OncePerTrip = Value
 }
+
 val referenceOnly = TriggerTypes.ReferenceOnly
 
 1 match {
@@ -12,6 +13,5 @@ val referenceOnly = TriggerTypes.ReferenceOnly
   case 1 | 4 => println("double meh!")
 }
 
-for {
-  char <- ('a' to 'z')
-} yield (char, 0)
+for {char <- ('a' to 'z')
+     } yield (char, 0)

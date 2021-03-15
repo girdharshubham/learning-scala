@@ -15,6 +15,12 @@ lazy val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
 lazy val typesafeLogging = "com.typesafe.scala-logging" %% "scala-logging" % TypesafeLoggingVersion
 lazy val rabbit = "com.rabbitmq" % "amqp-client" % "5.11.0"
 
+enablePlugins(GraalVMNativeImagePlugin)
+graalVMNativeImageOptions ++= Seq(
+  "--no-fallback",
+  "--allow-incomplete-classpath"
+)
+
 libraryDependencies ++= Seq(
   scalaTest,
   scodecCore,

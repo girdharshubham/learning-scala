@@ -13,13 +13,15 @@ lazy val scodecCore = "org.scodec" %% "scodec-core" % ScodecVersion
 lazy val scodecBits = "org.scodec" %% "scodec-bits" % ScodecBitsVersion
 lazy val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
 lazy val typesafeLogging = "com.typesafe.scala-logging" %% "scala-logging" % TypesafeLoggingVersion
+lazy val rabbit = "com.rabbitmq" % "amqp-client" % "5.11.0"
 
 libraryDependencies ++= Seq(
   scalaTest,
   scodecCore,
   scodecBits,
   logback,
-  typesafeLogging
+  typesafeLogging,
+  rabbit
 )
 
 coverageMinimum := 80

@@ -8,3 +8,27 @@ class OPInteger(val value: Int) extends AnyRef {
 }
 
 print(new OPInteger(12))
+
+class Animal {
+  def speak: String = "I'm an animal"
+}
+
+trait Dog {
+  def speak: String = "I'm a dog!"
+}
+
+trait Cat {
+  def speak: String = "I'm a cat!"
+}
+
+class Pet extends Animal with Dog with Cat {
+  override def speak: String = super.speak
+}
+
+new Pet().speak
+
+trait A {
+  self =>
+  def speak(): String
+}
+

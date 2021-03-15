@@ -15,3 +15,4 @@ val referenceOnly = TriggerTypes.ReferenceOnly
 for {
   char <- ('a' to 'z')
 } yield (char, 0)
+

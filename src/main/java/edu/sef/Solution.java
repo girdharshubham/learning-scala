@@ -6,7 +6,7 @@ interface BaseLike<A> {
     }
 }
 
-class Base<A> implements BaseLike<A>{
+class Base<A> implements BaseLike<A> {
     protected void someMethod(int x) {
         System.out.println("This is the value for x: " + x);
     }
@@ -14,7 +14,7 @@ class Base<A> implements BaseLike<A>{
 
 class Child<A> extends Base<A> {
     @Override
-    public void someMethod(int x){
+    public void someMethod(int x) {
         System.out.println("This is the overridden value for x: " + x);
     }
 }

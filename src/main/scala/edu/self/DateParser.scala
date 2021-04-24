@@ -10,4 +10,4 @@ class DateParser {
 
 object DateParser {
   def apply(): DateParser = new DateParser()
-}``
+}

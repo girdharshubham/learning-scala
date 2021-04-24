@@ -23,7 +23,8 @@ libraryDependencies ++= Seq(
 
 lazy val root = (project in file("."))
   .aggregate(
-    leetcode
+    leetcode,
+    shapeless
   )
 
 lazy val leetcode = (project in file("leetcode"))

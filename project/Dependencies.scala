@@ -6,7 +6,11 @@ object Dependencies {
   val ScodecBitsVersion = "1.1.22"
   val TypesafeLoggingVersion = "3.9.2"
   val ShapelessVersion = "2.3.3"
+  val AkkaVersion = "2.6.8"
+  val AkkaHttpVersion = "10.2.4"
 
+  val akkaStreams = "com.typesafe.akka" %% "akka-stream" % AkkaVersion
+  val akkaHttp = "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion
   lazy val libShapeless = "com.chuusai" %% "shapeless" % ShapelessVersion
   lazy val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % "test"
   lazy val scodecCore = "org.scodec" %% "scodec-core" % ScodecVersion

@@ -39,5 +39,12 @@ lazy val shapeless = (project in file("shapeless"))
     )
   )
 
+lazy val `akka-http` = (project in file("akka-http"))
+  .settings(
+    libraryDependencies ++= Seq(
+      akkaHttp,
+      akkaStreams
+    )
+  )
 coverageMinimum := 80
 coverageFailOnMinimum := false

@@ -46,5 +46,14 @@ lazy val `akka-http` = (project in file("akka-http"))
       akkaStreams
     )
   )
+
+lazy val s99 = (project in file("s99"))
+  .settings(
+    scalaVersion := "2.12.12",
+    libraryDependencies ++= Seq(
+      scalaTest
+    )
+  )
+
 coverageMinimum := 80
 coverageFailOnMinimum := false

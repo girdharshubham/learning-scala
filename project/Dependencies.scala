@@ -1,13 +1,13 @@
 import sbt._
 
 object Dependencies {
-  val scalaTestVersion = "3.2.2"
-  val ScodecVersion = "1.11.7"
-  val ScodecBitsVersion = "1.1.22"
-  val TypesafeLoggingVersion = "3.9.2"
-  val ShapelessVersion = "2.3.3"
-  val AkkaVersion = "2.6.8"
-  val AkkaHttpVersion = "10.2.4"
+  private val scalaTestVersion = "3.2.2"
+  private val ScodecVersion = "1.11.7"
+  private val ScodecBitsVersion = "1.1.22"
+  private val TypesafeLoggingVersion = "3.9.2"
+  private val ShapelessVersion = "2.3.3"
+  private val AkkaVersion = "2.6.8"
+  private val AkkaHttpVersion = "10.2.4"
 
   val akkaStreams = "com.typesafe.akka" %% "akka-stream" % AkkaVersion
   val akkaHttp = "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion

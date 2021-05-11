@@ -1,6 +1,4 @@
 package edu.self.leetcode
-import scala.collection.immutable
-import scala.collection.immutable.HashMap
 
 object Strings {
 

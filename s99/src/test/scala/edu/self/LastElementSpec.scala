@@ -12,11 +12,17 @@ class LastElementSpec extends AnyFlatSpec with Matchers {
     _ => Random.nextInt()
   }.toList
 
-  val lastElement = LastElement
+  val listOps = ListOps
 
   it should "be able to find the last element from a list" in {
     val list = generate(100)
 
-    list.last shouldBe lastElement.last(list)
+    list.last shouldBe listOps.last(list)
+  }
+
+  it should "be able to find the second last element from a list" in {
+    val list = generate(100)
+
+    list(list.size - 2) shouldBe listOps.lastButOne(list)
   }
 }

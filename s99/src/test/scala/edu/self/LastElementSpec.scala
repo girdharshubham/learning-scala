@@ -25,4 +25,10 @@ class LastElementSpec extends AnyFlatSpec with Matchers {
 
     list(list.size - 2) shouldBe listOps.lastButOne(list)
   }
+
+  it should "be able to find the kth element from a list" in {
+    val list = generate(100)
+    val k = 2
+    list(2) shouldBe listOps.kthElement(2, list)
+  }
 }

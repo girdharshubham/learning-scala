@@ -55,5 +55,10 @@ lazy val s99 = (project in file("s99"))
     )
   )
 
+lazy val scala3 = (project in file("scala3"))
+  .settings(
+    scalaVersion := "3.0.0"
+  )
+
 coverageMinimum := 80
 coverageFailOnMinimum := false

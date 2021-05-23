@@ -8,6 +8,7 @@ object Dependencies {
   private val ShapelessVersion = "2.3.3"
   private val AkkaVersion = "2.6.8"
   private val AkkaHttpVersion = "10.2.4"
+  private val ZioVersion = "1.0.8"
 
   val akkaStreams = "com.typesafe.akka" %% "akka-stream" % AkkaVersion
   val akkaHttp = "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion
@@ -18,4 +19,7 @@ object Dependencies {
   lazy val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
   lazy val typesafeLogging = "com.typesafe.scala-logging" %% "scala-logging" % TypesafeLoggingVersion
   lazy val rabbit = "com.rabbitmq" % "amqp-client" % "5.11.0"
+
+  lazy val libZio = "dev.zio" %% "zio" % ZioVersion
+  lazy val zioStreams = "dev.zio" %% "zio-streams" % ZioVersion
 }

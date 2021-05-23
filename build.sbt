@@ -4,7 +4,7 @@ name := "learning-scala"
 
 version := "0.1"
 
-scalaVersion := "2.12.12"
+scalaVersion := "2.12.13"
 
 enablePlugins(GraalVMNativeImagePlugin)
 graalVMNativeImageOptions ++= Seq(
@@ -23,11 +23,11 @@ libraryDependencies ++= Seq(
 
 lazy val root = (project in file("."))
   .aggregate(
-    leetcode,
+    dsalgo,
     shapeless
   )
 
-lazy val leetcode = (project in file("leetcode"))
+lazy val dsalgo = (project in file("dsalgo"))
   .settings(
     libraryDependencies ++= Seq.empty
   )
@@ -49,7 +49,7 @@ lazy val `akka-http` = (project in file("akka-http"))
 
 lazy val s99 = (project in file("s99"))
   .settings(
-    scalaVersion := "2.12.12",
+    scalaVersion := "2.12.13",
     libraryDependencies ++= Seq(
       scalaTest
     )
@@ -60,5 +60,12 @@ lazy val scala3 = (project in file("scala3"))
     scalaVersion := "3.0.0"
   )
 
+lazy val zio = (project in file("zio"))
+  .settings(
+    scalaVersion := "2.12.13",
+    libraryDependencies ++= Seq(
+      libZio
+    )
+  )
 coverageMinimum := 80
 coverageFailOnMinimum := false

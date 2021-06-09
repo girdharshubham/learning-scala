@@ -67,5 +67,6 @@ lazy val zio = (project in file("zio"))
       libZio
     )
   )
+
 coverageMinimum := 80
 coverageFailOnMinimum := false

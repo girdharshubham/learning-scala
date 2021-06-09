@@ -5,5 +5,8 @@
 .idea
 target
 
+.sonar_lock
+report-task.txt
+
 .bsp
 project/project

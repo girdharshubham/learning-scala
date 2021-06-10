@@ -12,15 +12,6 @@ graalVMNativeImageOptions ++= Seq(
   "--allow-incomplete-classpath"
 )
 
-libraryDependencies ++= Seq(
-  scalaTest,
-  scodecCore,
-  scodecBits,
-  logback,
-  typesafeLogging,
-  rabbit
-)
-
 lazy val root = (project in file("."))
   .aggregate(
     dsalgo,
@@ -58,6 +49,17 @@ lazy val s99 = (project in file("s99"))
 lazy val scala3 = (project in file("scala3"))
   .settings(
     scalaVersion := "3.0.0"
+  )
+
+lazy val vanilla = (project in file("vanilla"))
+  .settings(
+    scalaVersion := "2.12.13",
+    libraryDependencies ++= Seq(
+      rabbit,
+      scodecBits,
+      scodecCore,
+      scalaTest
+    )
   )
 
 lazy val zio = (project in file("zio"))

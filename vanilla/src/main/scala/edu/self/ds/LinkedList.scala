@@ -1,43 +1,53 @@
 package edu.self.ds
 
-trait LinkedList[+A] {
-  def value: A
+import scala.annotation.tailrec
 
-  def next: LinkedList[A]
+sealed trait LinkedList[A] {
+  val value: A
+  var next: Option[LinkedList[A]]
 
-  def foreach(f: A => Unit)
+  def count: Int
+  def last: LinkedList[A]
+  def insert(node: LinkedList[A]): Unit
 }
 
-case object Nil extends LinkedList[Nothing] {
-  override def value: Nothing = throw new NoSuchElementException("head of an empty list")
+case class Node[A](value: A, override var next: Option[LinkedList[A]]) extends LinkedList[A] {
 
-  override def next: LinkedList[Nothing] = throw new UnsupportedOperationException("tail of an empty list")
+  def last: LinkedList[A] = last(Some(this))
+  def count: Int = count(Some(this))
 
-  override def foreach(f: Nothing => Unit): Unit = ()
+  @tailrec
+  private def count(node: Option[LinkedList[A]], total: Int = 0): Int = node match {
+    case Some(value) if value.next.isEmpty => total + 1
+    case Some(value) if value.next.isDefined => count(value.next, total + 1)
+  }
+
+  @tailrec
+  private def last(node: Option[LinkedList[A]]): LinkedList[A] = node match {
+    case Some(value) if value.next.isEmpty => value
+    case Some(value) if value.next.isDefined => last(value.next)
+  }
+
+  override def insert(node: LinkedList[A]): Unit = {
+    val last: LinkedList[A] = this.last
+    last.next = Some(node)
+  }
 }
 
-case class Node[A](value: A, next: LinkedList[A]) extends LinkedList[A] {
-  override def foreach(f: A => Unit): Unit = next match {
-    case Nil => f(value)
-      ()
-    case elem => f(value)
-      elem.foreach(f)
-  }
+object LinkedList {
+  def main(args: Array[String]): Unit = {
+    val nodeOne = Node(1, None)
+    val nodeTwo = Node(2, None)
+    val nodeThree = Node(3, None)
 
-  def size: Int = {
-    var length = 0
-    var current: LinkedList[A] = this
-    while (current != Nil) {
-      length += 1
-      current = current.next
-    }
-    length
-  }
+    println(nodeOne.count)
 
-  def length: Int = goLength(list = this)
+    println(nodeOne)
+    nodeOne.insert(nodeTwo)
+    println(nodeOne)
+    nodeOne.insert(nodeThree)
+    println(nodeOne)
 
-  def goLength(length: Int = 0, list: LinkedList[A]): Int = list.next match {
-    case Nil => length + 1
-    case _ => goLength(length + 1, list.next)
+    println(nodeOne.count)
   }
 }
